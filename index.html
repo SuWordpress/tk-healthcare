@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TK Healthcare Services — Nigeria's Trusted Pharmacy Supplier</title>
+  <meta name="description" content="Order pharmaceutical products wholesale or retail with doorstep delivery across Nigeria. 1,000+ products available.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<div id="navbar" data-page="home"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="badge badge-green">🇳🇬 Serving all of Nigeria</span>
+    </div>
+    <h1>Pharmacy supplies<br>for <span class="text-green">every order size</span></h1>
+    <p class="hero-sub">From bulk wholesale to single-unit retail — TK Healthcare delivers over 1,000 NAFDAC-approved pharmaceutical products directly to your doorstep across Nigeria.</p>
+    <div class="hero-actions">
+      <a href="pages/wholesale.html" class="btn-lg btn-green-lg">Shop Wholesale →</a>
+      <a href="pages/retail.html" class="btn-lg btn-outline-lg">Shop Retail</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">1,000+</div><div class="stat-label">Products</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">48hr</div><div class="stat-label">Avg. delivery</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">36</div><div class="stat-label">States covered</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">35%</div><div class="stat-label">Wholesale savings</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-float">
+      <div class="live-dot"></div>
+      <span>Orders being processed now</span>
+    </div>
+    <div class="hero-card">
+      <div class="mode-tabs">
+        <button class="mode-tab active" id="tab-w" onclick="switchMode('wholesale')">📦 Wholesale</button>
+        <button class="mode-tab" id="tab-r" onclick="switchMode('retail')">🛍️ Retail</button>
+      </div>
+      <div class="price-list" id="price-list"></div>
+      <div class="savings-note" id="savings-note">
+        ✅ Wholesale: save up to 35% vs retail price
+      </div>
+    </div>
+    <div class="hero-img-grid">
+      <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&q=80" alt="Medicine" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=200&q=80" alt="Tablets" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=200&q=80" alt="Vitamins" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- BUYER TYPES -->
+<section class="section buyer-section">
+  <div class="text-center">
+    <div class="section-label">Who we serve</div>
+    <h2 class="section-title">Two ways to buy — one platform</h2>
+    <p class="section-sub" style="margin:0 auto 48px;">Whether you're a hospital buying in bulk or a patient needing a single pack, TK Healthcare has you covered.</p>
+  </div>
+  <div class="buyer-grid">
+    <div class="buyer-card wholesale-card">
+      <div class="buyer-icon" style="background:var(--green)">🏭</div>
+      <h3>Wholesale Buyers</h3>
+      <p>Hospitals, pharmacies, clinics, and distributors buying in bulk at Nigeria's most competitive prices.</p>
+      <ul class="buyer-perks">
+        <li>✓ Carton & pallet-level pricing</li>
+        <li>✓ Up to 35% off retail</li>
+        <li>✓ Credit terms available</li>
+        <li>✓ Dedicated account manager</li>
+        <li>✓ Volume discount tiers</li>
+        <li>✓ Priority processing</li>
+      </ul>
+      <a href="pages/wholesale.html" class="buyer-btn wholesale-btn">Explore wholesale →</a>
+    </div>
+    <div class="buyer-card retail-card">
+      <div class="buyer-icon" style="background:var(--amber)">🛒</div>
+      <h3>Retail Buyers</h3>
+      <p>Individuals, households, and small practices ordering single packs with doorstep delivery.</p>
+      <ul class="buyer-perks">
+        <li>✓ No minimum order quantity</li>
+        <li>✓ NAFDAC-certified products</li>
+        <li>✓ Same-day dispatch (Lagos)</li>
+        <li>✓ Secure online payment</li>
+        <li>✓ Pharmacist support chat</li>
+        <li>✓ Easy returns & refunds</li>
+      </ul>
+      <a href="pages/retail.html" class="buyer-btn retail-btn">Shop retail →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section" style="background:var(--gray)">
+  <div class="section-label">Featured products</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:12px;">
+    <h2 class="section-title" style="margin-bottom:0">Popular this week</h2>
+    <a href="pages/products.html" style="color:var(--green);font-size:14px;font-weight:600;">View all 1,000+ products →</a>
+  </div>
+  <div class="grid-4" id="featured-products"></div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="section-label">Browse by category</div>
+  <h2 class="section-title">What are you looking for?</h2>
+  <div class="cat-grid" id="cat-grid"></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--green-pale)">
+  <div class="text-center">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">Order in four simple steps</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h4>Choose your mode</h4>
+      <p>Select Wholesale or Retail — pricing and quantities adjust automatically to your buyer type.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h4>Browse & add to cart</h4>
+      <p>Search across 1,000+ products. Filter by category, brand, or dosage form with ease.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h4>Pay securely</h4>
+      <p>Pay via bank transfer, card, or USSD. Wholesale buyers may apply for credit terms.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h4>Receive delivery</h4>
+      <p>Tracked doorstep delivery to your location anywhere across Nigeria within 24–72 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="section">
+  <div class="trust-grid">
+    <div>
+      <div class="section-label">Why TK Healthcare</div>
+      <h2 class="section-title">Nigeria's most trusted pharmaceutical supplier</h2>
+      <p style="color:var(--text-2);line-height:1.7;margin-bottom:28px;">We are a fully registered, NAFDAC-compliant pharmaceutical distributor serving healthcare providers and individuals across all 36 states of Nigeria.</p>
+      <div class="trust-items">
+        <div class="trust-item"><span class="trust-icon">✅</span><div><strong>NAFDAC Registered</strong><p>All products are NAFDAC-approved and sourced from verified manufacturers.</p></div></div>
+        <div class="trust-item"><span class="trust-icon">🏛️</span><div><strong>CAC Certified</strong><p>Fully incorporated with the Corporate Affairs Commission of Nigeria.</p></div></div>
+        <div class="trust-item"><span class="trust-icon">❄️</span><div><strong>Cold-chain storage</strong><p>Temperature-controlled storage for sensitive pharmaceutical products.</p></div></div>
+        <div class="trust-item"><span class="trust-icon">🚚</span><div><strong>Nationwide delivery</strong><p>Doorstep delivery across all 36 states with real-time tracking.</p></div></div>
+      </div>
+    </div>
+    <div class="trust-img-stack">
+      <img src="https://images.unsplash.com/photo-1563213126-a4273aed2016?w=500&q=80" alt="Pharmacy products" class="trust-img-main">
+      <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&q=80" alt="Medicines" class="trust-img-side">
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-content">
+    <h2>Ready to place your order?</h2>
+    <p>Join thousands of healthcare providers and individuals who trust TK Healthcare for their pharmaceutical needs.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
+      <a href="pages/wholesale.html" class="btn-lg btn-green-lg" style="background:white;color:var(--green)">Start wholesale order →</a>
+      <a href="pages/products.html" class="btn-lg btn-outline-lg" style="border-color:white;color:white;">Browse products</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script src="js/components.js"></script>
+<script src="js/products.js"></script>
+<script>
+  // Render featured products (first 4)
+  document.getElementById('featured-products').innerHTML =
+    PRODUCTS.slice(0, 4).map(p => productCardHTML(p, 'wholesale')).join('');
+
+  // Render categories
+  document.getElementById('cat-grid').innerHTML = CATEGORIES.map(c => `
+    <a href="pages/products.html?cat=${encodeURIComponent(c.name)}" class="cat-card">
+      <span class="cat-icon">${c.icon}</span>
+      <span class="cat-name">${c.name}</span>
+      <span class="cat-count">${c.count}+ products</span>
+    </a>
+  `).join('');
+
+  // Price switcher
+  const priceData = {
+    wholesale: [
+      {name:'Amoxicillin 500mg', price:'₦4,200', unit:'carton (24 packs)'},
+      {name:'Paracetamol 500mg', price:'₦2,800', unit:'carton (20 packs)'},
+      {name:'Vitamin C 1000mg', price:'₦3,600', unit:'carton (12 packs)'},
+      {name:'Metformin 500mg', price:'₦5,100', unit:'carton (10 packs)'},
+    ],
+    retail: [
+      {name:'Amoxicillin 500mg', price:'₦480', unit:'per pack'},
+      {name:'Paracetamol 500mg', price:'₦220', unit:'per pack'},
+      {name:'Vitamin C 1000mg', price:'₦650', unit:'per pack'},
+      {name:'Metformin 500mg', price:'₦950', unit:'per pack'},
+    ]
+  };
+
+  function switchMode(mode) {
+    const data = priceData[mode];
+    document.getElementById('price-list').innerHTML = data.map(d => `
+      <div class="price-row">
+        <div><div class="price-name">${d.name}</div><div class="price-unit-label">${d.unit}</div></div>
+        <div class="price-val" style="color:${mode==='retail'?'var(--amber)':'var(--green)'}">${d.price}</div>
+      </div>
+    `).join('');
+    document.getElementById('tab-w').className = 'mode-tab' + (mode==='wholesale'?' active':'');
+    document.getElementById('tab-r').className = 'mode-tab' + (mode==='retail'?' active':'');
+    document.getElementById('savings-note').innerHTML = mode==='wholesale'
+      ? '✅ Wholesale: save up to 35% vs retail price'
+      : '🛒 Retail: no minimum order — buy what you need';
+  }
+  switchMode('wholesale');
+  updateCartBadge();
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — TK Healthcare Services Company Ltd</title>
+  <meta name="description" content="Learn about TK Healthcare Services Company Ltd — Nigeria's trusted pharmaceutical distributor for wholesale and retail.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .about-hero { background:var(--green); padding:80px 48px; color:white; }
+    .about-hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; max-width:1200px; margin:0 auto; }
+    .about-hero h1 { font-family:'Playfair Display',serif; font-size:42px; font-weight:800; margin-bottom:18px; line-height:1.15; }
+    .about-hero p { font-size:16px; opacity:.85; line-height:1.8; }
+    .about-hero-img { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .about-hero-img img { border-radius:12px; width:100%; height:180px; object-fit:cover; border:2px solid rgba(255,255,255,.15); }
+    .about-hero-img img:nth-child(2) { margin-top:20px; }
+    .about-hero-img img:nth-child(4) { margin-top:20px; }
+
+    .mission-section { padding:72px 48px; }
+    .mission-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .mission-img { border-radius:var(--radius-lg); overflow:hidden; height:420px; }
+    .mission-img img { width:100%; height:100%; object-fit:cover; }
+    .mission-values { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; }
+    .value-card { background:var(--green-pale); border-radius:var(--radius); padding:20px; border:0.5px solid rgba(15,110,86,.12); }
+    .value-icon { font-size:24px; margin-bottom:8px; }
+    .value-card h4 { font-size:14px; font-weight:600; color:var(--green-dark); margin-bottom:4px; }
+    .value-card p { font-size:12px; color:var(--text-2); line-height:1.6; }
+
+    /* CERTIFICATIONS */
+    .certs-section { background:var(--gray); padding:56px 48px; text-align:center; }
+    .certs-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:36px; }
+    .cert-card { background:white; border-radius:var(--radius-lg); padding:28px 20px; border:0.5px solid var(--border); }
+    .cert-icon { font-size:32px; margin-bottom:12px; }
+    .cert-card h4 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px; }
+    .cert-card p { font-size:12px; color:var(--text-2); line-height:1.6; }
+
+    /* CONTACT */
+    .contact-section { padding:72px 48px; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+    .contact-info h2 { font-family:'Playfair Display',serif; font-size:30px; margin-bottom:14px; }
+    .contact-info p { color:var(--text-2); line-height:1.75; margin-bottom:32px; }
+    .contact-methods { display:flex; flex-direction:column; gap:16px; }
+    .contact-method { display:flex; gap:16px; align-items:flex-start; padding:18px; border:0.5px solid var(--border); border-radius:var(--radius); background:var(--gray); }
+    .contact-method-icon { font-size:22px; }
+    .contact-method h4 { font-size:13px; font-weight:700; color:var(--text-2); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; }
+    .contact-method a, .contact-method p { font-size:14px; font-weight:500; color:var(--green); }
+    .contact-form { background:var(--green-pale); border-radius:var(--radius-lg); padding:36px; border:0.5px solid rgba(15,110,86,.12); }
+    .contact-form h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
+    .contact-form p { font-size:13px; color:var(--text-2); margin-bottom:24px; }
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; font-size:12px; font-weight:600; color:var(--text-2); margin-bottom:6px; text-transform:uppercase; letter-spacing:.05em; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; padding:11px 14px; border:0.5px solid var(--border); border-radius:8px; font-size:14px; font-family:'DM Sans',sans-serif; outline:none; transition:border-color .2s; background:white; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--green); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-submit { width:100%; padding:13px; background:var(--green); color:white; border:none; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; transition:opacity .2s; font-family:'DM Sans',sans-serif; }
+    .form-submit:hover { opacity:.88; }
+
+    /* FAQ */
+    .faq-section { background:var(--gray); padding:72px 48px; }
+    .faq-grid { max-width:760px; margin:40px auto 0; display:flex; flex-direction:column; gap:12px; }
+    .faq-item { background:white; border-radius:var(--radius); border:0.5px solid var(--border); overflow:hidden; }
+    .faq-q { padding:18px 20px; font-size:15px; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+    .faq-q::after { content:'＋'; font-size:20px; color:var(--text-3); transition:transform .25s; }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--green); }
+    .faq-a { padding:0 20px; max-height:0; overflow:hidden; transition:max-height .3s ease, padding .3s; font-size:14px; color:var(--text-2); line-height:1.75; }
+    .faq-item.open .faq-a { max-height:200px; padding:4px 20px 18px; }
+
+    @media(max-width:900px){
+      .about-hero { padding:48px 20px; }
+      .about-hero-inner { grid-template-columns:1fr; }
+      .about-hero-img { display:none; }
+      .mission-section { padding:48px 20px; }
+      .mission-grid { grid-template-columns:1fr; }
+      .mission-img { height:260px; }
+      .certs-section { padding:48px 20px; }
+      .certs-grid { grid-template-columns:1fr 1fr; }
+      .contact-section { padding:48px 20px; }
+      .contact-grid { grid-template-columns:1fr; }
+      .faq-section { padding:48px 20px; }
+    }
+    @media(max-width:600px){ .certs-grid { grid-template-columns:1fr; } .mission-values { grid-template-columns:1fr; } .form-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<div id="navbar" data-page="about"></div>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:18px;border:1px solid rgba(255,255,255,.15);">🇳🇬 Proudly Nigerian</div>
+      <h1>TK Healthcare Services Company Ltd</h1>
+      <p>We are a fully registered Nigerian pharmaceutical distribution company committed to making quality, affordable medications accessible to every Nigerian — whether they need a single pack or a full pallet.</p>
+    </div>
+    <div class="about-hero-img">
+      <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&q=80" alt="Pharmacy">
+      <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=300&q=80" alt="Tablets">
+      <img src="https://images.unsplash.com/photo-1563213126-a4273aed2016?w=300&q=80" alt="Medicine">
+      <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&q=80" alt="Healthcare">
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission-section" id="mission">
+  <div class="mission-grid">
+    <div class="mission-img">
+      <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=600&q=80" alt="Mission">
+    </div>
+    <div>
+      <div class="section-label">Our mission</div>
+      <h2 class="section-title">Making healthcare accessible across Nigeria</h2>
+      <p style="color:var(--text-2);line-height:1.75;margin-bottom:24px;">TK Healthcare was founded with a single mission: to bridge the gap between pharmaceutical manufacturers and the people who need their products — regardless of whether they're a large hospital or an individual family.</p>
+      <p style="color:var(--text-2);line-height:1.75;margin-bottom:24px;">We do this by maintaining one of Nigeria's largest pharmaceutical product catalogs, offering both wholesale and retail pricing on the same platform, and delivering to every corner of Nigeria.</p>
+      <div class="mission-values">
+        <div class="value-card"><div class="value-icon">✅</div><h4>Quality</h4><p>Only NAFDAC-approved products from verified suppliers.</p></div>
+        <div class="value-card"><div class="value-icon">🤝</div><h4>Trust</h4><p>Transparent pricing, no hidden fees, full accountability.</p></div>
+        <div class="value-card"><div class="value-icon">🚀</div><h4>Speed</h4><p>Same-day dispatch and nationwide delivery you can track.</p></div>
+        <div class="value-card"><div class="value-icon">🌍</div><h4>Access</h4><p>Reaching all 36 states — including rural communities.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-section">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Fully certified & compliant</h2>
+  <p style="color:var(--text-2);max-width:500px;margin:0 auto;">Every aspect of our operations meets Nigeria's highest regulatory standards for pharmaceutical distribution.</p>
+  <div class="certs-grid">
+    <div class="cert-card"><div class="cert-icon">🏛️</div><h4>CAC Registered</h4><p>Fully incorporated with the Corporate Affairs Commission of Nigeria.</p></div>
+    <div class="cert-card"><div class="cert-icon">🔬</div><h4>NAFDAC Certified</h4><p>All products sourced from NAFDAC-registered manufacturers and importers.</p></div>
+    <div class="cert-card"><div class="cert-icon">📋</div><h4>PCN Compliant</h4><p>Operating in full compliance with the Pharmacists Council of Nigeria guidelines.</p></div>
+    <div class="cert-card"><div class="cert-icon">🛡️</div><h4>GSM Certified</h4><p>Good Storage & Manufacturing Practice certification for our warehouse facilities.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-label">Get in touch</div>
+      <h2>We'd love to hear from you</h2>
+      <p>Whether you want to place an order, apply for a wholesale account, or just have questions — our team is here to help. We respond within 2 hours during business hours.</p>
+      <div class="contact-methods">
+        <div class="contact-method"><span class="contact-method-icon">📞</span><div><h4>Phone</h4><a href="tel:+2348000000000">+234 800 000 0000</a><p style="color:var(--text-3);font-size:12px;margin-top:4px;">Mon–Sat, 8 AM – 6 PM WAT</p></div></div>
+        <div class="contact-method"><span class="contact-method-icon">📧</span><div><h4>Email</h4><a href="mailto:info@tkhealthcare.ng">info@tkhealthcare.ng</a><p style="color:var(--text-3);font-size:12px;margin-top:4px;">We reply within 2 hours</p></div></div>
+        <div class="contact-method"><span class="contact-method-icon">💬</span><div><h4>WhatsApp</h4><a href="#">+234 800 000 0001</a><p style="color:var(--text-3);font-size:12px;margin-top:4px;">Chat with our team directly</p></div></div>
+        <div class="contact-method"><span class="contact-method-icon">📍</span><div><h4>Head Office</h4><p style="color:var(--text);font-size:14px;font-weight:500;">Lagos, Nigeria</p><p style="color:var(--text-3);font-size:12px;margin-top:2px;">With branches in Abuja & Port Harcourt</p></div></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send us a message</h3>
+      <p>Fill in your details and we'll be in touch shortly.</p>
+      <div class="form-row">
+        <div class="form-group"><label>First name</label><input type="text" placeholder="First name"></div>
+        <div class="form-group"><label>Last name</label><input type="text" placeholder="Last name"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
+      <div class="form-group"><label>Subject</label>
+        <select><option>Select subject</option><option>Product inquiry</option><option>Wholesale account</option><option>Order support</option><option>Delivery issue</option><option>Other</option></select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea rows="4" placeholder="How can we help you?"></textarea></div>
+      <button class="form-submit" onclick="alert('Message sent! We\'ll get back to you shortly.')">Send message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-label text-center">FAQ</div>
+  <h2 class="section-title text-center">Frequently asked questions</h2>
+  <div class="faq-grid">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the difference between wholesale and retail buying?</div><div class="faq-a">Wholesale is for businesses buying in bulk (cartons and above) at significantly discounted prices. Retail is for individuals buying single packs at standard prices. Both are available on our platform — just choose your mode at checkout.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need a prescription to buy medicines?</div><div class="faq-a">For over-the-counter (OTC) products, no prescription is needed. For prescription-only medicines (POMs), we require a valid prescription from a licensed healthcare professional. Our pharmacist team can assist you with this requirement.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are all your products NAFDAC approved?</div><div class="faq-a">Yes. Every product in our catalog is NAFDAC-registered and sourced directly from licensed manufacturers or authorized importers. We verify every product batch before stocking.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I apply for a wholesale account?</div><div class="faq-a">Fill in the application form on our Wholesale page. You'll need your business registration number, PCN license (for pharmacies), and contact details. Our team reviews applications within 24 hours.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?</div><div class="faq-a">We accept bank transfers, debit/credit cards, USSD payments, and POS on delivery (select areas). Wholesale accounts may qualify for credit terms of 30–60 days.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I return products if there's an issue?</div><div class="faq-a">Yes. Unopened products may be returned within 7 days of delivery. Damaged, expired, or incorrect products are replaced free of charge within 48 hours of you reporting the issue — no questions asked.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you deliver outside Lagos?</div><div class="faq-a">Absolutely. We deliver to all 36 states and FCT Abuja. Lagos deliveries take 4–24 hours, major cities 24–48 hours, and the rest of Nigeria 48–72 hours. All orders are fully tracked.</div></div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+<script src="../js/products.js"></script>
+<script>
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    document.querySelectorAll('.faq-item.open').forEach(i => { if(i!==item) i.classList.remove('open'); });
+    item.classList.toggle('open');
+  }
+  updateCartBadge();
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — TK Healthcare Services</title>
+  <meta name="description" content="Browse 1,000+ NAFDAC-approved pharmaceutical products. Shop wholesale or retail with doorstep delivery across Nigeria.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-header { background: var(--green); padding: 52px 48px 40px; }
+    .page-header h1 { font-family:'Playfair Display',serif; font-size:38px; color:white; margin-bottom:10px; }
+    .page-header p { color:rgba(255,255,255,.8); font-size:16px; }
+
+    .products-layout { display:grid; grid-template-columns:240px 1fr; gap:32px; padding:40px 48px; }
+
+    /* SIDEBAR */
+    .sidebar { position:sticky; top:90px; align-self:start; }
+    .sidebar-section { margin-bottom:28px; }
+    .sidebar-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-3); margin-bottom:12px; }
+    .sidebar-mode { display:flex; flex-direction:column; gap:8px; }
+    .mode-radio {
+      display:flex; align-items:center; gap:10px; padding:12px 14px;
+      border-radius:10px; border:1.5px solid var(--border); cursor:pointer;
+      transition:all .2s; font-size:14px; font-weight:500;
+    }
+    .mode-radio.selected-w { border-color:var(--green); background:var(--green-light); color:var(--green-dark); }
+    .mode-radio.selected-r { border-color:var(--amber); background:var(--amber-light); color:#633806; }
+    .mode-dot { width:14px; height:14px; border-radius:50%; border:2px solid currentColor; flex-shrink:0; }
+    .mode-radio.selected-w .mode-dot, .mode-radio.selected-r .mode-dot { background:currentColor; }
+
+    .filter-cats { display:flex; flex-direction:column; gap:4px; }
+    .filter-cat {
+      padding:8px 12px; border-radius:8px; font-size:13px; font-weight:500;
+      color:var(--text-2); cursor:pointer; transition:all .2s; border:none; background:transparent; text-align:left;
+    }
+    .filter-cat:hover, .filter-cat.active { background:var(--green-light); color:var(--green); }
+    .filter-cat span { font-size:11px; color:var(--text-3); float:right; margin-top:1px; }
+
+    /* TOOLBAR */
+    .toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+    .search-box {
+      display:flex; align-items:center; gap:8px;
+      border:0.5px solid var(--border); border-radius:10px;
+      padding:0 14px; background:white; flex:1; max-width:360px;
+    }
+    .search-box input { border:none; outline:none; font-size:14px; padding:10px 0; width:100%; font-family:'DM Sans',sans-serif; background:transparent; }
+    .search-icon { font-size:18px; color:var(--text-3); }
+    .results-count { font-size:14px; color:var(--text-2); }
+    .sort-select {
+      border:0.5px solid var(--border); border-radius:8px; padding:8px 14px;
+      font-size:13px; font-family:'DM Sans',sans-serif; color:var(--text); background:white; cursor:pointer;
+    }
+
+    /* GRID */
+    .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .empty-state { grid-column:1/-1; text-align:center; padding:60px; color:var(--text-3); }
+    .empty-state h3 { font-size:20px; margin-bottom:8px; }
+
+    @media(max-width:900px){
+      .products-layout{ grid-template-columns:1fr; padding:24px 20px; }
+      .sidebar{ position:static; }
+      .products-grid{ grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:600px){ .products-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<div id="navbar" data-page="products"></div>
+
+<div class="page-header">
+  <h1>Our Products</h1>
+  <p>1,000+ NAFDAC-approved pharmaceutical products — wholesale & retail</p>
+</div>
+
+<div class="products-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Buying mode</div>
+      <div class="sidebar-mode">
+        <div class="mode-radio selected-w" id="radio-w" onclick="setMode('wholesale')">
+          <div class="mode-dot"></div>
+          <div><strong>Wholesale</strong><br><span style="font-size:11px;font-weight:400;color:inherit;opacity:.7">Bulk · 35% savings</span></div>
+        </div>
+        <div class="mode-radio" id="radio-r" onclick="setMode('retail')">
+          <div class="mode-dot"></div>
+          <div><strong>Retail</strong><br><span style="font-size:11px;font-weight:400;color:inherit;opacity:.7">Single packs · No min.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Categories</div>
+      <div class="filter-cats" id="filter-cats"></div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Availability</div>
+      <div class="filter-cats">
+        <button class="filter-cat active" onclick="setStock('all',this)">All products</button>
+        <button class="filter-cat" onclick="setStock('in',this)">In stock only</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search" placeholder="Search products, categories…" oninput="renderProducts()">
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="results-count" id="results-count"></span>
+        <select class="sort-select" id="sort" onchange="renderProducts()">
+          <option value="default">Sort: Default</option>
+          <option value="price-asc">Price: Low to high</option>
+          <option value="price-desc">Price: High to low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </main>
+</div>
+
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+<script src="../js/products.js"></script>
+<script>
+  let currentMode = 'wholesale';
+  let currentCat = 'All';
+  let currentStock = 'all';
+
+  // Read URL param
+  const urlCat = new URLSearchParams(window.location.search).get('cat');
+  if (urlCat) currentCat = urlCat;
+
+  function setMode(m) {
+    currentMode = m;
+    document.getElementById('radio-w').className = 'mode-radio' + (m==='wholesale'?' selected-w':'');
+    document.getElementById('radio-r').className = 'mode-radio' + (m==='retail'?' selected-r':'');
+    renderProducts();
+  }
+
+  function setStock(s, el) {
+    currentStock = s;
+    document.querySelectorAll('.sidebar-section:last-child .filter-cat').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    renderProducts();
+  }
+
+  // Build category filters
+  const cats = ['All', ...CATEGORIES.map(c => c.name)];
+  document.getElementById('filter-cats').innerHTML = cats.map(c => `
+    <button class="filter-cat ${c===currentCat?'active':''}" onclick="setCat('${c}',this)">${c}${c!=='All'?`<span>${CATEGORIES.find(x=>x.name===c)?.count||''}+</span>`:''}</button>
+  `).join('');
+
+  function setCat(cat, el) {
+    currentCat = cat;
+    document.querySelectorAll('#filter-cats .filter-cat').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    renderProducts();
+  }
+
+  function renderProducts() {
+    const query = document.getElementById('search').value.toLowerCase();
+    const sort = document.getElementById('sort').value;
+
+    let list = PRODUCTS.filter(p => {
+      const matchCat = currentCat === 'All' || p.category === currentCat;
+      const matchSearch = !query || p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query);
+      const matchStock = currentStock === 'all' || p.inStock;
+      return matchCat && matchSearch && matchStock;
+    });
+
+    if (sort === 'price-asc') list.sort((a,b) => (currentMode==='wholesale'?a.wholesalePrice-b.wholesalePrice:a.retailPrice-b.retailPrice));
+    if (sort === 'price-desc') list.sort((a,b) => (currentMode==='wholesale'?b.wholesalePrice-a.wholesalePrice:b.retailPrice-a.retailPrice));
+    if (sort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
+
+    document.getElementById('results-count').textContent = `${list.length} product${list.length!==1?'s':''}`;
+    document.getElementById('products-grid').innerHTML = list.length
+      ? list.map(p => productCardHTML(p, currentMode)).join('')
+      : `<div class="empty-state"><h3>No products found</h3><p>Try a different search or category.</p></div>`;
+  }
+
+  renderProducts();
+  updateCartBadge();
+</script>
+</body>
+</html>
